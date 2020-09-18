@@ -18,7 +18,6 @@ public class 日期问题 {
 			start = sdf.parse("1960-1-1").getTime();
 			end = sdf.parse("2059-12-31").getTime();
 		} catch (ParseException e) {
-			e.printStackTrace();
 		}
 	}
 	
@@ -32,7 +31,9 @@ public class 日期问题 {
 		f(Integer.parseInt("19"+split[2]),Integer.parseInt(split[0]),Integer.parseInt(split[1]));
 		f(Integer.parseInt("20"+split[2]),Integer.parseInt(split[1]),Integer.parseInt(split[0]));
 		f(Integer.parseInt("19"+split[2]),Integer.parseInt(split[1]),Integer.parseInt(split[0]));
-		for(Date date:)
+		for(Date date:set) {
+			System.out.println(sdf.format(date));
+		}
 	}
 	
 	public static void f(int year,int month,int day) {
@@ -40,13 +41,12 @@ public class 日期问题 {
 			if(month>12) {
 			}else if((month==1||month==3||month==5||month==7||month==8||month==10||month==12) && day>31) {
 			}else if((month==4||month==6||month==9||month==11)&&day>30) {
-			}else if(!(year%4==0 || year%4!=0 && year%400==0) && month==2 && day>28) {
-			}else if((year%4==0 || year%4!=0 && year%400==0) && month==2 && day>29) {
+			}else if(!isRunNian(year) && month==2 && day>28) {
+			}else if(isRunNian(year) && month==2 && day>29) {
 			}else {
 				try {
 					set.add(sdf.parse(year+"-"+month+"-"+day));
 				} catch (ParseException e) {
-					e.printStackTrace();
 				}
 			}
 		}
